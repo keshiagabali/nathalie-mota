@@ -39,5 +39,5 @@ window.onclick = function(event) {
 
 // REF CONTACT FORM 7
 jQuery(document).ready(function($) {
-    $("#ref-photo").val(acfReferencePhoto);
+    $("#réf.photo").val(acfReferencePhoto);
 });

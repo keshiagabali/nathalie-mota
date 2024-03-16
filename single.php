@@ -14,6 +14,14 @@
 
                 // Catégories photo
                 $categories = get_the_terms(get_the_ID(), 'categorie');
+                $current_category_slugs = array();
+
+                if ($categories) {
+                    foreach ($categories as $category) {
+                        $current_category_slugs[] = $category->slug;
+                    }
+                }
+
                 if ($categories) {
                     echo '<p>Catégorie : ';
                     $category_names = array();
@@ -128,6 +136,11 @@
             </div>
 
         </div>
+    </div>
+    <!-- Photos Apparentées -->
+    <div class="related-images">
+        <h3>VOUS AIMEREZ AUSSI</h3>
+        <?php include ( 'templates_part/photo_block.php')?>
     </div>
 </main>
 

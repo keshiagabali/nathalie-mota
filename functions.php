@@ -34,7 +34,7 @@ function enqueue_font_awesome() {
 }
 add_action('wp_enqueue_scripts', 'enqueue_font_awesome');
 
-/* CHARGER PLUS */
+/* CHARGER PLUS FILTRE*/
 
 
 ?>

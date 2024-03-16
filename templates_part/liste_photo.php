@@ -1,11 +1,14 @@
 <div class="custom-post-thumbnails">
-    <div class="thumbnail-container-accueil">
+    <input type="hidden" name="page" value="1">
 
+    <div class="thumbnail-container-accueil">
         <?php
 
         $args_custom_posts = array(
             'post_type' => 'photo', 
-            'posts_per_page' => 8,
+            'posts_per_page' => -1,
+            'orderby' => 'date', 
+            'order' => 'DESC',
         );
 
         $custom_posts_query = new WP_Query($args_custom_posts);
@@ -28,7 +31,7 @@
                                 <i class="fas fa-expand-arrows-alt fullscreen-icon"></i>
                                 <?php
                                 
-                                $related_reference_photo = get_field('reference_photo');
+                                $related_reference_photo = get_field('reference');
                                 $related_categories = get_the_terms(get_the_ID(), 'categorie');
                                 $related_category_names = array();
 
@@ -47,10 +50,11 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    <?php endif; ?>
-                </a>
-            </div>
+                        </a>
+                    </div>
+                <?php endif; ?>
+            </a>
+        </div>
 
         <?php endwhile; ?>
 

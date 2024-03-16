@@ -27,6 +27,14 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_scripts');
 
 add_theme_support( 'post-thumbnails' );
 
+/* FONTAWESOME */
+
+function enqueue_font_awesome() {
+    wp_enqueue_style('font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
+}
+add_action('wp_enqueue_scripts', 'enqueue_font_awesome');
+
+/* CHARGER PLUS */
+
 
 ?>
-

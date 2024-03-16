@@ -64,6 +64,7 @@
                     <?php the_post_thumbnail(); ?>
                 </a>
             <?php endif; ?>
+            <i class="fas fa-expand-arrows-alt fullscreen-icon"></i>
         </div>
     </div>
     <div class="zone-contact">
@@ -71,77 +72,69 @@
             <div class="texte-contact">
                 <p>Cette photo vous intéresse ?</p>
             </div>
+
             <div class="bouton-contact">
-                <button id="myBtn-photo">Contact</button>
                 <?php include ( 'templates_part/modal.php')?>
+
                 <?php
-                $reference_photo = get_field('reference');
-                if ($reference_photo) {
-                    echo '<script type="text/javascript">';
-                    echo 'var acfReferencePhoto = "' . esc_js($reference_photo) . '";';
-                    echo '</script>';
-                }
+                    $reference_photo = get_field('reference');
+                    if ($reference_photo) {
+                        echo '<script type="text/javascript">';
+                        echo 'var acfReferencePhoto = "' . esc_js($reference_photo) . '";';
+                        echo '</script>';
+                    }
                 ?>
             </div>
-        </div>
+        </div> 
+
         <div class="right-contact">
             <?php
-            // ID actuel
-            $current_post_id = get_the_ID();
+            
+                $current_post_id = get_the_ID();
 
-            $args = array(
-                'post_type' => 'photo',
-                'posts_per_page' => -1,
-                'order' => 'ASC',
-            );
-            $all_photo_posts = get_posts($args);
+                
+                $args = array(
+                    'post_type' => 'photo',
+                    'posts_per_page' => -1,
+                    'order' => 'ASC',
+                );
+                $all_photo_posts = get_posts($args);
 
-            // Index actuel
-            $current_post_index = array_search($current_post_id, array_column($all_photo_posts, 'ID'));
+                $current_post_index = array_search($current_post_id, array_column($all_photo_posts, 'ID'));
 
-            $prev_post_index = $current_post_index - 1;
-            $next_post_index = $current_post_index + 1;
+                $prev_post_index = $current_post_index - 1;
+                $next_post_index = $current_post_index + 1;
 
-            $prev_post = ($prev_post_index >= 0) ? $all_photo_posts[$prev_post_index] : end($all_photo_posts);
-            $next_post = ($next_post_index < count($all_photo_posts)) ? $all_photo_posts[$next_post_index] : reset($all_photo_posts);
+                $prev_post = ($prev_post_index >= 0) ? $all_photo_posts[$prev_post_index] : end($all_photo_posts);
+                $next_post = ($next_post_index < count($all_photo_posts)) ? $all_photo_posts[$next_post_index] : reset($all_photo_posts);
 
-            $prev_permalink = get_permalink($prev_post);
-            $next_permalink = get_permalink($next_post);
+                $prev_permalink = get_permalink($prev_post);
+                $next_permalink = get_permalink($next_post);
 
-            // Miniatures (a modifié il doit afficher q'une photo)
-            $prev_thumbnail = get_the_post_thumbnail($prev_post, 'thumbnail');
-            $next_thumbnail = get_the_post_thumbnail($next_post, 'thumbnail');
+                $prev_thumbnail = get_the_post_thumbnail($prev_post, 'thumbnail');
+                $next_thumbnail = get_the_post_thumbnail($next_post, 'thumbnail');
             ?>
 
-            <div class="prev-nav">
-                <a href="<?php echo esc_url($prev_permalink); ?>" class="prev-photo">
-                    <?php if ($prev_thumbnail) : ?>
-                        <div class="thumbnail-container">
-                            <?php echo $prev_thumbnail; ?>
-                            <img src="<?php echo get_template_directory_uri(); ?>/img_logo/fleche-gauche.png" alt="Previous" class="arrow-img-gauche" />
-                        </div>
-                    <?php endif; ?>
+            <div class="thumbnail-container">
+                <div class="thumbnail-wrapper">
+                </div>
+                
+                <a href="<?php echo esc_url($prev_permalink); ?>" class="arrow-link" data-thumbnail="<?php echo esc_url(get_the_post_thumbnail_url($prev_post, 'thumbnail')); ?>" id="prev-arrow-link">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/fleche-gauche.png" alt="Précédent" class="arrow-img-gauche" id="prev-arrow" />
+                </a>
+                <a href="<?php echo esc_url($next_permalink); ?>" class="arrow-link" data-thumbnail="<?php echo esc_url(get_the_post_thumbnail_url($next_post, 'thumbnail')); ?>" id="next-arrow-link">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/fleche-droite.png" alt="Suivant" class="arrow-img-droite" id="next-arrow" />
                 </a>
             </div>
-
-            <div class="next-nav">
-                <a href="<?php echo esc_url($next_permalink); ?>" class="next-photo">
-                    <?php if ($next_thumbnail) : ?>
-                        <div class="thumbnail-container">
-                            <?php echo $next_thumbnail; ?>
-                            <img src="<?php echo get_template_directory_uri(); ?>/img_logo/fleche-droite.png" alt="Next" class="arrow-img-droite" />
-                        </div>
-                    <?php endif; ?>
-                </a>
-            </div>
-
         </div>
     </div>
+
     <!-- Photos Apparentées -->
     <div class="related-images">
         <h3>VOUS AIMEREZ AUSSI</h3>
         <?php include ( 'templates_part/photo_block.php')?>
     </div>
+      
 </main>
 
 <?php get_footer(); ?>

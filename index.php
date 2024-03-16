@@ -12,20 +12,21 @@
 
         while ($related_photos_query->have_posts()) :
             $related_photos_query->the_post();
+            $post_permalink = get_permalink();
     ?>
+    <a href="<?php echo esc_url($post_permalink); ?>">
+
             <div class="hero-image" style="background-image: url('<?php echo get_the_post_thumbnail_url(); ?>');">
                 <img src="<?php echo get_template_directory_uri(); ?>/img_logo/Titre header.png" alt="Titre Accueil">
             </div>
 
+    </a>
+
         <?php endwhile; ?>
-        
+
         <?php wp_reset_postdata(); ?>
 
 </div>
-
-    <!-- Bouton chargez plus -->
-    <div class="home-button">
-        <a href="<?php echo home_url(); ?>" class="button">Chargez plus</a>
-    </div>
+<?php include ( 'templates_part/liste_photo.php')?>
 
 <?php get_footer(); ?>

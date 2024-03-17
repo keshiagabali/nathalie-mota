@@ -6,7 +6,7 @@
 
         $args_custom_posts = array(
             'post_type' => 'photo', 
-            'posts_per_page' => -1,
+            'posts_per_page' => 16,
             'orderby' => 'date', 
             'order' => 'DESC',
         );

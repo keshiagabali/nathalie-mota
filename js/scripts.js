@@ -1,3 +1,22 @@
+// BURGER MENU
+
+$('#open-fullscreen-menu-button').click(function(e) {
+    e.stopPropagation(); 
+    $('header').toggleClass('mobile-menu-opened');
+    console.log('BOUTON CLIQUÉ!');
+});
+
+$('#close-fullscreen-menu-button').click(function() {
+    $('header').removeClass('mobile-menu-opened');
+    console.log('MENU FERMÉ!');
+});
+
+$(document).click(function(event) {
+    if (!$('header').has(event.target).length && !$('header').is(event.target)) {
+        $('header').removeClass('mobile-menu-opened');
+    }
+});
+
 // MODAL HEADER
 
 var headerModal = document.getElementById('myModal');
@@ -19,9 +38,10 @@ window.onclick = function(event) {
 }
 
 // MODAL SINGLE
+
 if( jQuery('#myBtn-photo').length ){
 
-    var photoModal = document.getElementById('myModal');
+    var photoModal = document.getElementById('myModal-photo');
     var photoBtn = document.getElementById("myBtn-photo");
     var photoSpan = document.getElementsByClassName("close-photo")[0];
 
@@ -38,9 +58,12 @@ if( jQuery('#myBtn-photo').length ){
             photoModal.style.display = "none";
         }
     }
+
     jQuery(document).ready(function($) {
-        $("#ref-photo").val(acfReferencePhoto);
-    });
+        $("#myBtn-photo").on('click', function() {
+            $("#ref-photo").val(acfReferencePhoto);
+        });
+    }); 
 }
 
 // PHOTO NAV SINGLE
@@ -90,6 +113,7 @@ prevArrowLink.addEventListener('mouseover', () => handleMouseover('prev'));
 }
 
 // REF CONTACT FORM 7
+
 jQuery(document).ready(function($) {
     $("#réf.photo").val(acfReferencePhoto);
 });
@@ -166,7 +190,7 @@ if ($('#date-sort').length) {
     recursive_change('date-sort'); 
 }
 
-// LIGHTBOX SINGLE
+// LIGHTBOX / NAV SINGLE 
 
 $('.right-container img').click(function(){
     $('.modal-container').addClass('opened');

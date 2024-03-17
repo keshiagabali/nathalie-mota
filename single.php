@@ -1,10 +1,25 @@
 <?php get_header(); ?>
 
+<!-- Lightbox Photo -->
+<div class='modal-container'>
+    <span class="btn-close">X</span>
+    <div class="left-arrow"></div>
+    <div>
+        <img src="" class="middle-image" />
+        <div class="info-photo">
+            <span id="modal-reference"></span>
+            <span id="modal-category"></span>
+        </div>
+    </div>
+    <div class="right-arrow"></div>
+</div>
+
+<!-- Single -->
 <main id="main" class="content-area">
     <div class="zone-contenu mobile-first">
         <div class="left-container">
             <div class="left-contenu">
-                <h1><?php the_title(); ?></h1>
+                <h2><?php the_title(); ?></h2>
                 <?php
                 // Réf photo
                 $reference_photo = get_field('reference');
@@ -60,13 +75,14 @@
         </div>
         <div class="right-container">
             <?php if (has_post_thumbnail()) : ?>
-                <a href="<?php echo wp_get_attachment_image_src(get_post_thumbnail_id(), 'large')[0]; ?>" data-lightbox="image-gallery" class="photo">
+                <a data-href="<?php echo wp_get_attachment_image_src(get_post_thumbnail_id(), 'large')[0]; ?>" class="photo">
                     <?php the_post_thumbnail(); ?>
                 </a>
+                <i class="fas fa-expand-arrows-alt fullscreen-icon"></i>
             <?php endif; ?>
-            <i class="fas fa-expand-arrows-alt fullscreen-icon"></i>
         </div>
     </div>
+
     <div class="zone-contact">
         <div class="left-contact">
             <div class="texte-contact">
@@ -74,7 +90,7 @@
             </div>
 
             <div class="bouton-contact">
-                <?php include ( 'templates_part/modal.php')?>
+                <?php include ( 'templates_part/modal-photo.php')?>
 
                 <?php
                     $reference_photo = get_field('reference');
@@ -120,10 +136,10 @@
                 </div>
                 
                 <a href="<?php echo esc_url($prev_permalink); ?>" class="arrow-link" data-thumbnail="<?php echo esc_url(get_the_post_thumbnail_url($prev_post, 'thumbnail')); ?>" id="prev-arrow-link">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/fleche-gauche.png" alt="Précédent" class="arrow-img-gauche" id="prev-arrow" />
+                    <img src="<?php echo get_template_directory_uri(); ?>/img_logo/fleche-gauche.png" alt="Précédent" class="arrow-img-gauche" id="prev-arrow" />
                 </a>
                 <a href="<?php echo esc_url($next_permalink); ?>" class="arrow-link" data-thumbnail="<?php echo esc_url(get_the_post_thumbnail_url($next_post, 'thumbnail')); ?>" id="next-arrow-link">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/fleche-droite.png" alt="Suivant" class="arrow-img-droite" id="next-arrow" />
+                    <img src="<?php echo get_template_directory_uri(); ?>/img_logo/fleche-droite.png" alt="Suivant" class="arrow-img-droite" id="next-arrow" />
                 </a>
             </div>
         </div>
@@ -136,5 +152,6 @@
     </div>
       
 </main>
+<script src="<?php echo get_template_directory_uri(); ?>/js/modal-photo.js"></script>
 
 <?php get_footer(); ?>

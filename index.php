@@ -61,6 +61,8 @@
     </select>
 </div>
 
-<?php include ( 'templates_part/liste_photo.php')?>
+<div id="photo-container">
+    <?php include ( 'templates_part/liste_photo.php')?>
+</div>
 
 <?php get_footer(); ?>

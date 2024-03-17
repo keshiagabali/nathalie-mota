@@ -1,0 +1,29 @@
+.hero {
+    position: relative;
+    height: 782px;
+}
+
+.hero-image {
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    position: relative;
+    background-image: url('/img_logo/background-hero.jpeg'); 
+}
+
+.hero-image img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 100%;
+    height: auto;
+}
+
+/* MEDIA HERO */
+
+@media screen and (max-width: 768px) {
+    .hero {
+        height: 400px; /* Hauteur - Mobiles */
+    }
+}

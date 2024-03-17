@@ -1,0 +1,256 @@
+body {
+    margin-top: 90px;
+    background-color: #FFFFFF;
+}
+
+main {
+    padding: 20px;
+    font-family: 'Space Mono';
+}
+
+.main-content-post {
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0px 4px 14px 10px #00000008;
+    z-index: 1000;
+}
+
+.header-logo img {
+    max-width: 300px;
+}
+
+.logo-container img {
+    padding-left: 21px;
+    padding-top: 35px;
+    width: 212px;
+}
+
+.header-menu {
+    display: flex;
+    align-items: center;
+    padding: 0;
+}
+
+.header-menu li a,
+.footer-menu li a,
+#open-modal-button-header,
+.close {
+    text-decoration: none;
+    color: #000;
+    font-family: "Space Mono", monospace;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 23.7px;
+    letter-spacing: 0.1em;
+    text-align: left;
+}
+
+.header-menu ul,
+.footer-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.header-menu li,
+.footer-menu li {
+    margin-right: 20px;
+}
+
+.header-menu li a:hover {
+    font-family: Space Mono;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+/* BURGER MENU */
+
+.mobile-menu-button {
+    display: none;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.bar {
+    display: block;
+    width: 27.42px;
+    height: 2px;
+    margin: 5px auto;
+    background-color: #000;
+    transition: 0.4s;
+}
+
+/* MODAL */
+
+#open-modal-button-header {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+#open-modal-button-header:hover {
+    font-family: Space Mono;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.close:hover,
+.close-button:hover {
+    text-decoration: underline;
+}
+
+/* MEDIA MENU */
+
+@media (max-width: 768px) {
+    .mobile-menu-button {
+        display: block;
+    }
+
+    .header-menu {
+        display: none;
+    }
+
+    .mobile-menu-opened .header-menu {
+        display: flex;
+        flex-direction: column; 
+        align-items: center;
+        background-color: #fff;
+        position: fixed;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 10px;
+        box-shadow: 0px 4px 14px 10px #00000008;
+        z-index: 1000;
+        overflow-y: auto;
+    }
+
+    .close-button {
+        position: absolute;
+        font-family: "Space Mono", monospace;
+        top: 10px;
+        right: 10px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+        color: #000;
+    }
+
+    .close-button-container {
+        width: 100%;
+        height: 86px;
+        background: white;
+        position: absolute;
+        top: 0;
+    }
+    
+    .header-menu ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .footer-menu ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: center;
+        text-align: center;
+        flex-flow: column;
+    }
+
+     
+    .mobile-menu-opened .header-menu {
+        background: #E00000;
+        height: 110vh;
+        left: 0;
+        top: 0;
+        position: fixed;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        overflow-y: auto;
+    }
+    .header-menu li a,
+    #open-modal-button-header {
+        font-family: 'Space Mono';
+        font-weight: 400;
+        font-size: 44px;
+        line-height: 65px;
+        text-align: center;
+        text-transform: uppercase;
+        color: #FFFFFF;
+        margin-bottom: 20px;
+        transition: font-weight 0.3s ease;
+    }
+
+    .header-menu li {
+    margin-right: -3px;
+    }
+
+    .header-menu li a:hover,
+    #open-modal-button-header:hover {
+        font-size: 44px;
+        font-weight: 600;
+    }
+
+    .close-button {
+        color: #000000;
+        font-size: 23px;
+        position: absolute;
+        top: 22px;
+        right: 30px;
+    }
+
+    body.mobile-menu-opened {
+        background: rgba(0, 0, 0, 0.5);
+    }
+    
+    .header-menu li {
+        margin-bottom: 20px;
+    }
+
+    .logo-container {
+        display: block;
+    }
+
+    .close-button {
+        display: block;
+    }
+}
+
+@media (min-width: 768px) {
+    .logo-container {
+        display: none;
+    }
+
+    .close-button {
+        display: none;
+    }
+}

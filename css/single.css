@@ -156,9 +156,6 @@
     text-align: center;
 }
 
-.thumbnail-overlay-single:hover {
-    opacity: 1;
-}
 
 .photo-info {
     display: flex;
@@ -179,7 +176,11 @@
 
 .photo-info-left,
 .photo-info-right {
-    width: 60%;
+    width: 20%;
+}
+
+.thumbnail-overlay-single:hover {
+    opacity: 1;
 }
 
 .thumbnail-overlay-single img {
@@ -189,7 +190,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-}
+} 
 
 .fullscreen-icon {
     position: absolute;
@@ -225,13 +226,6 @@
     cursor: pointer;
 }
 
-.photo {
-    transition: filter 0.3s;
-}
-
-.photo:hover {
-    filter: brightness(0.7); 
-}
 
 .left-arrow,
 .right-arrow {

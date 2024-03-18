@@ -1,5 +1,4 @@
 body {
-    margin-top: 90px;
     background-color: #FFFFFF;
 }
 
@@ -15,21 +14,19 @@ main {
 
 
 header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
     display: flex;
     justify-content: space-between;
+    height: 80px;
     align-items: center;
-    padding: 20px;
     background-color: #fff;
-    box-shadow: 0px 4px 14px 10px #00000008;
-    z-index: 1000;
+    margin-left: 149px;
+    margin-right: 149px;
 }
 
 .header-logo img {
     max-width: 300px;
+    width: 216px;
+    height: 14px;
 }
 
 .logo-container img {
@@ -56,6 +53,8 @@ header {
     line-height: 23.7px;
     letter-spacing: 0.1em;
     text-align: left;
+    text-transform: uppercase;
+    margin-right: 40px;
 }
 
 .header-menu ul,
@@ -72,7 +71,7 @@ header {
 }
 
 .header-menu li a:hover {
-    font-family: Space Mono;
+    font-family: "Space Mono", monospace;
     font-size: 16px;
     font-weight: 700;
 }
@@ -104,7 +103,7 @@ header {
 }
 
 #open-modal-button-header:hover {
-    font-family: Space Mono;
+    font-family: "Space Mono", monospace;
     font-size: 16px;
     font-weight: 700;
 }

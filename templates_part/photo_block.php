@@ -27,7 +27,9 @@
                             <!-- Overlay -->
                             <div class="thumbnail-overlay-single">
                                 <img src="<?php echo get_template_directory_uri(); ?>/img_logo/Icon_eye.png" alt="Icône de l'œil">
-                                <i class="fas fa-expand-arrows-alt fullscreen-icon"></i>
+                                <div class="fullscreen-icon">
+                                    <img src="<?php echo get_template_directory_uri(); ?>/img_logo/Icon_fullscreen.png" alt="fullscreen-icon">
+                                </div>
                                 <?php
 
                                 $related_reference_photo = get_field('reference');

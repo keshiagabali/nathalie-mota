@@ -61,7 +61,7 @@ if( jQuery('#myBtn-photo').length ){
 
     jQuery(document).ready(function($) {
         $("#myBtn-photo").on('click', function() {
-            $("#ref-photo").val(acfReferencePhoto);
+            $("#ref-photo").val(acfreference);
         });
     }); 
 }
@@ -115,125 +115,38 @@ prevArrowLink.addEventListener('mouseover', () => handleMouseover('prev'));
 // REF CONTACT FORM 7
 
 jQuery(document).ready(function($) {
-    $("#réf.photo").val(acfReferencePhoto);
+    $("#réf.photo").val(acfreference);
 });
 
-// PAGINATION FILTRE
+// PAGINATION 
 
-let loading = false; 
-const $loadMoreButton = $('#load-more-posts'); 
-const $container = $('.thumbnail-container-accueil'); 
+jQuery(document).ready(function($) {
+    var page = 1;
 
-$loadMoreButton.on('click', function () {
-    get_more_posts(true) 
-});
+    $('#load-more-posts').on('click', function() {
+        page++;
+        loadMorePosts(page);
+    });
 
-function get_more_posts(load) {
-    let inputPage = $('input[name="page"]');
-    let page = parseInt(inputPage.val());
-    page = load ? page + 1 : 1; 
-    const category = $('select[name="category-filter"]').val();
-    const format = $('select[name="format-filter"]').val();
-    const dateSort = $('select[name="date-sort"]').val();
+    function loadMorePosts(pageNumber) {
+        var ajaxurl = $(this).data('ajaxurl');
+        var nonce = $(this).data('nonce');
 
-    console.log(category, format, dateSort, page);
-
-    $.ajax({
-        type: 'GET',
-        url: wp_data.ajax_url, 
-        data: {
-            action: 'load_more_posts',
-            page,
-            category,
-            format,
-            dateSort
-        },
-        success: function (response) {
-            if (response) {
-                if (load) {
-                    $container.append(response); 
+        $.ajax({
+            url: ajaxurl,
+            type: 'POST',
+            data: {
+                action: 'load_more_posts',
+                page: pageNumber,
+                security: nonce
+            },
+            success: function(data) {
+                if (data) {
+                    $('.thumbnail-container-accueil').append(data);
                 } else {
-                    $container.html(response);  
-                }
-                $loadMoreButton.text('Charger plus'); 
-                inputPage.val(page); 
-                loading = false; 
-            } else {
-                if (load) {
-                    $loadMoreButton.text('Fin des publications'); 
-                } else {
-                    let txt = '<div style="text-align:center;width:100%; color: #000;font-family: Space Mono, monospace;font-size: 16px;"><p>Aucun résultat ne correspond aux filtres de recherche.<br>';
-                    $container.html(txt); 
+                    $('#load-more-posts').text('Aucune photo supplémentaire à charger');
                 }
             }
-        },
-    });
-    if (!loading) {
-        loading = true;
-        $loadMoreButton.text('Chargement en cours...'); 
+        });
     }
-}
-
-function recursive_change(selectId) {
-    $('#' + selectId).change(function () {
-        get_more_posts(false); 
-    });
-}
-
-if ($('#category-filter').length) {
-    recursive_change('category-filter'); 
-}
-if ($('#format-filter').length) {
-    recursive_change('format-filter'); 
-}
-if ($('#date-sort').length) {
-    recursive_change('date-sort'); 
-}
-
-// LIGHTBOX / NAV SINGLE 
-
-$('.right-container img').click(function(){
-    $('.modal-container').addClass('opened');
-
-    const imageSrc = $(this).attr('src');
-
-    const prevArrow = $('#prev-arrow-link').clone();
-    const nextArrow = $('#next-arrow-link').clone();
-
-    const reference = $('#ph-reference').text();
-    const category = $('#ph-category').text();
-
-    $('#modal-reference').html(reference);
-    $('#modal-category').html(category);
-    $('.middle-image').attr('src', imageSrc);
-    $('.left-arrow').html(prevArrow);
-    $('.right-arrow').html(nextArrow);
-
-    const refLeft = $('.left-arrow > a').attr('href');
-    const refRight = $('.right-arrow > a').attr('href');
-
-    $('.left-arrow > a').attr('href', refLeft + '?modal=1');
-    $('.right-arrow > a').attr('href', refRight + '?modal=1');
-
-    if (!$('.left-arrow > a > span').length) {
-        $('.left-arrow > a').append('<span>Précédente</span>');
-    }
-
-    if (!$('.right-arrow > a > span').length) {
-        $('.right-arrow > a').append('<span>Suivante</span>');
-    }
-})
-
-$('.btn-close').click(function(e){
-    $('.modal-container').removeClass('opened');
-})
-
-var queryString = window.location.search;
-
-var searchParams = new URLSearchParams(queryString);
-
-var modal = searchParams.get('modal');
-
-if( modal ){
-    $('.right-container img').click();
-}
+});

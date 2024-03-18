@@ -1,3 +1,17 @@
+<!-- Lightbox Photo -->
+<div class='modal-container'>
+    <span class="btn-close">X</span>
+    <div class="left-arrow"></div>
+    <div>
+        <img src="" class="middle-image" />
+        <div class="info-photo">
+            <span id="modal-reference"></span>
+            <span id="modal-category"></span>
+        </div>
+    </div>
+    <div class="right-arrow"></div>
+</div>
+
 <div class="custom-post-thumbnails">
     <input type="hidden" name="page" value="1">
 
@@ -6,7 +20,8 @@
 
         $args_custom_posts = array(
             'post_type' => 'photo', 
-            'posts_per_page' => 16,
+            'posts_per_page' => 8,
+            'paged' => $paged,
             'orderby' => 'date', 
             'order' => 'DESC',
         );
@@ -27,8 +42,10 @@
 
                             <!-- Overlay -->
                             <div class="thumbnail-overlay">
-                                <img src="<?php echo get_template_directory_uri(); ?>/img_logo/Icon_eye.png" alt="Eye Icon"> 
-                                <i class="fas fa-expand-arrows-alt fullscreen-icon"></i>
+                                <img src="<?php echo get_template_directory_uri(); ?>/img_logo/Icon_eye.png" alt="Eye Icon">
+                                <div class="fullscreen-icon">
+                                    <img src="<?php echo get_template_directory_uri(); ?>/img_logo/Icon_fullscreen.png" alt="fullscreen-icon">
+                                </div>
                                 <?php
                                 
                                 $related_reference_photo = get_field('reference');
@@ -62,6 +79,10 @@
     </div>
     
     <div class="view-all-button">
-        <button id="load-more-posts">Charger plus</button>
+        <button id="load-more-posts"
+                data-ajaxurl="<?php echo admin_url('admin-ajax.php'); ?>"
+                data-nonce="<?php echo wp_create_nonce('load_more_posts_nonce'); ?>">
+            Charger plus
+        </button>
     </div>
 </div>

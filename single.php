@@ -78,7 +78,6 @@
                 <a data-href="<?php echo wp_get_attachment_image_src(get_post_thumbnail_id(), 'large')[0]; ?>" class="photo">
                     <?php the_post_thumbnail(); ?>
                 </a>
-                <i class="fas fa-expand-arrows-alt fullscreen-icon"></i>
             <?php endif; ?>
         </div>
     </div>
@@ -96,7 +95,7 @@
                     $reference_photo = get_field('reference');
                     if ($reference_photo) {
                         echo '<script type="text/javascript">';
-                        echo 'var acfReferencePhoto = "' . esc_js($reference_photo) . '";';
+                        echo 'var acfreference = "' . esc_js($reference) . '";';
                         echo '</script>';
                     }
                 ?>

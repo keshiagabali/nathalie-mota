@@ -90,15 +90,6 @@
 
             <div class="bouton-contact">
                 <?php include ( 'templates_part/modal-photo.php')?>
-
-                <?php
-                    $reference_photo = get_field('reference');
-                    if ($reference_photo) {
-                        echo '<script type="text/javascript">';
-                        echo 'var acfreference = "' . esc_js($reference) . '";';
-                        echo '</script>';
-                    }
-                ?>
             </div>
         </div> 
 
@@ -132,6 +123,7 @@
 
             <div class="thumbnail-container">
                 <div class="thumbnail-wrapper">
+                    
                 </div>
                 
                 <a href="<?php echo esc_url($prev_permalink); ?>" class="arrow-link" data-thumbnail="<?php echo esc_url(get_the_post_thumbnail_url($prev_post, 'thumbnail')); ?>" id="prev-arrow-link">
@@ -151,6 +143,6 @@
     </div>
       
 </main>
-<script src="<?php echo get_template_directory_uri(); ?>/js/modal-photo.js"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/js/scripts.js"></script>
 
 <?php get_footer(); ?>

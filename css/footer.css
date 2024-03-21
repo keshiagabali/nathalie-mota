@@ -19,7 +19,7 @@
 }
 
 .footer-menu a:hover {
-    font-family: Space Mono;
+    font-family: "Space Mono", monospace;
     font-size: 16px;
     font-weight: 700;
 }
@@ -149,6 +149,7 @@ form {
     align-items: center;
     max-width: 400px;
     margin: 0 auto;
+    margin-top: 40px;
 }
 
 input[type=email],
@@ -161,14 +162,14 @@ textarea {
 
 input[type=submit] {
     display: block;
-    width: 263px;
+    width: 285px;
     height: 50px;
     padding: 8px 15px;
     border-radius: 2px;
     margin: 0 auto;
     transition: .3s ease-in-out;
     cursor: pointer;
-    font-family: Space Mono;
+    font-family: "Space Mono";
     font-size: 12px;
     font-weight: 400;
     line-height: 17.77px;
@@ -180,7 +181,8 @@ input[type=submit] {
 }
 
 input[type=submit]:hover {
-    background-color: #cccaca;
+    background-color: black;
+    color: #fff;
 }
 
 .wpcf7-not-valid-tip {
@@ -192,7 +194,7 @@ input[type=submit]:hover {
 .wpcf7 form.payment-required .wpcf7-response-output,
 .wpcf7 form .wpcf7-response-output {
     color: #65676d;
-    font-family: Poppins;
+    font-family: "Poppins";
     font-size: 14px;
     background-color: transparent;
     border: none;
@@ -213,12 +215,13 @@ input[type=submit]:hover {
 .wpcf7 input[type="email"],
 .wpcf7 textarea,
 .wpcf7 label {
-    font-family: Poppins;
+    font-family: "Poppins";
     font-size: 12px;
     font-weight: 500;
     line-height: 18px;
     letter-spacing: 0em;
     text-align: left;
+    text-transform: uppercase;
 }
 
 .wpcf7 textarea[name="your-message"] {

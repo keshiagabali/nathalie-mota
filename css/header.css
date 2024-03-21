@@ -5,6 +5,7 @@ body {
 main {
     padding: 20px;
     font-family: 'Space Mono';
+    margin-top: 20px;
 }
 
 .main-content-post {

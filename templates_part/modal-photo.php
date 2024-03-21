@@ -1,4 +1,4 @@
-<button id="myBtn-photo">Contact</button>
+<button id="myBtn-photo" data-reference="<?php echo esc_attr($reference_photo); ?>">Contact</button>
 
 <div id="myModal-photo" class="modal-photo">
 

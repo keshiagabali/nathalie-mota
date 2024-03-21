@@ -15,7 +15,7 @@
     border-radius: 2px;
     transition: .3s ease-in-out;
     cursor: pointer;
-    font-family: Space Mono;
+    font-family: 'Space Mono', monospace;
     font-size: 12px;
     font-weight: 400;
     line-height: 17.77px;
@@ -33,7 +33,6 @@
 }
 
 .texte-contact p {
-    font-family: Poppins;
     font-weight: 300;
     font-size: 14px;
     line-height: 21px;

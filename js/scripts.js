@@ -45,13 +45,13 @@ document.addEventListener('DOMContentLoaded', function() {
         var photoModal = document.getElementById('myModal-photo');
         var photoBtn = document.getElementById("myBtn-photo");
         var photoSpan = document.getElementsByClassName("close-photo")[0];
-        var referenceField = document.querySelector('#reference');
+        var referenceInput = photoModal.querySelector('input[name="your-subject"]');
+
 
         photoBtn.onclick = function() {
             photoModal.style.display = "block";
-        // Pré-remplissage du champ de référence
-        var referenceText = referenceField.textContent;
-        var referenceInput = photoModal.querySelector('input[name="your-subject"]');
+        
+        var referenceText = this.getAttribute('data-reference');
         if (referenceInput) {
             referenceInput.value = referenceText;
             }   

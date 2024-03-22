@@ -1,18 +1,7 @@
-<!-- Lightbox Photo -->
-<div class='modal-container'>
-    <span class="btn-close">X</span>
-    <div class="left-arrow"></div>
-    <div>
-        <img src="" class="middle-image" />
-        <div class="info-photo">
-            <span id="modal-reference"></span>
-            <span id="modal-category"></span>
-        </div>
-    </div>
-    <div class="right-arrow"></div>
-</div>
+<!-- Liste Photo -->
 
-<div class="custom-post-thumbnails">
+<div class="custom-post-thumbnail">
+
     <input type="hidden" name="page" value="1">
 
     <div class="thumbnail-container-accueil">
@@ -44,8 +33,9 @@
                             <div class="thumbnail-overlay">
                                 <img src="<?php echo get_template_directory_uri(); ?>/img_logo/Icon_eye.png" alt="Eye Icon">
                                 <div class="fullscreen-icon">
-                                    <img src="<?php echo get_template_directory_uri(); ?>/img_logo/Icon_fullscreen.png" alt="fullscreen-icon">
+                                    <img src="<?php echo get_template_directory_uri(); ?>/img_logo/Icon_fullscreen.png" alt="fullscreen-icon" class="fullscreen-trigger">
                                 </div>
+
                                 <?php
                                 
                                 $related_reference_photo = get_field('reference');
@@ -77,7 +67,21 @@
 
         <?php wp_reset_postdata(); ?>
     </div>
-    
+
+    <!-- Lightbox -->
+        <div class='modal-container'>
+            <span class="btn-close">X</span>
+            <div class="left-arrow"></div>
+            <div>
+                <img src="" class="middle-image" />
+                <div class="info-photo">
+                    <span id="modal-reference"></span>
+                    <span id="modal-category"></span>
+                </div>
+            </div>
+            <div class="right-arrow"></div>
+        </div>
+
     <div class="view-all-button">
         <button id="load-more-posts"
                 data-ajaxurl="<?php echo admin_url('admin-ajax.php'); ?>"

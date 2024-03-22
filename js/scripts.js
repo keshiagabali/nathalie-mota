@@ -70,7 +70,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // PHOTO NAV SINGLE
 
-        
         if ($('.right-container').length) {
             const wrapper = document.querySelector('.thumbnail-wrapper');
             const prevArrowLink = document.getElementById('prev-arrow-link');
@@ -117,7 +116,33 @@ document.addEventListener('DOMContentLoaded', function() {
             nextArrowLink.addEventListener('mouseout', handleMouseout);
         }
 
-    // PAGINATION 
+    // LIGHTBOX
+    
+    var fullscreenTriggers = document.querySelectorAll('.fullscreen-trigger');
+    
+    fullscreenTriggers.forEach(function (trigger) {
+        trigger.addEventListener('click', function (event) {
+            event.preventDefault();
+
+            var photoInfo = this.closest('.custom-post-thumbnail');
+            if (photoInfo) {
+                var modalReference = photoInfo.querySelector('#modal-reference').textContent;
+                var modalCategory = photoInfo.querySelector('#modal-category').textContent;
+                var modalImageSrc = photoInfo.previousElementSibling.getAttribute('href');
+
+                document.getElementById('modal-reference').textContent = modalReference;
+                document.getElementById('modal-category').textContent = modalCategory;
+                document.querySelector('.middle-image').setAttribute('src', modalImageSrc);
+                document.querySelector('.modal-container').classList.add('show');
+            }    
+        });
+    });
+
+    document.querySelector('.btn-close').addEventListener('click', function () {
+        document.querySelector('.modal-container').classList.remove('show');
+    });
+
+    // LOAD MORE 
 
     jQuery(document).ready(function($) {
         var page = 1;
@@ -128,9 +153,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         function loadMorePosts(pageNumber) {
-            var ajaxurl = $(this).data('ajaxurl');
-            var nonce = $(this).data('nonce');
-
+            var ajaxurl = $('#load-more-posts').data('ajaxurl');            
+            var nonce = $('#load-more-posts').data('nonce');
+            
             $.ajax({
                 url: ajaxurl,
                 type: 'POST',

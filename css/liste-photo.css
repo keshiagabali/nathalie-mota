@@ -8,7 +8,9 @@
     display: flex;  
     flex-wrap: wrap;  
     justify-content: space-between;  
-    margin-top: 20px;  
+    margin-top: 20px; 
+    margin-left: 149px;
+    margin-right: 149px; 
 }
 
 .custom-post-thumbnail {

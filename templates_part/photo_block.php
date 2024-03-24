@@ -27,9 +27,11 @@
                             <!-- Overlay -->
                             <div class="thumbnail-overlay-single">
                                 <img src="<?php echo get_template_directory_uri(); ?>/img_logo/Icon_eye.png" alt="Icône de l'œil">
-                                <div class="fullscreen-icon">
-                                    <img src="<?php echo get_template_directory_uri(); ?>/img_logo/Icon_fullscreen.png" alt="fullscreen-icon">
-                                </div>
+                                
+                                <button class="fullscreen-icon" data-src="<?php echo wp_get_attachment_image_src(get_post_thumbnail_id(), 'large')[0]; ?>">
+                                    <img src="<?php echo get_template_directory_uri(); ?>/img_logo/Icon_fullscreen.png" alt="fullscreen-icon" class="fullscreen-trigger">
+                                </button>
+
                                 <?php
 
                                 $related_reference_photo = get_field('reference');

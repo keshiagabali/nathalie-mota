@@ -32,9 +32,11 @@
                             <!-- Overlay -->
                             <div class="thumbnail-overlay">
                                 <img src="<?php echo get_template_directory_uri(); ?>/img_logo/Icon_eye.png" alt="Eye Icon">
-                                <div class="fullscreen-icon">
+
+                                <button class="fullscreen-icon" 
+                                    data-src="<?php echo wp_get_attachment_image_src(get_post_thumbnail_id(), 'large')[0]; ?>">
                                     <img src="<?php echo get_template_directory_uri(); ?>/img_logo/Icon_fullscreen.png" alt="fullscreen-icon" class="fullscreen-trigger">
-                                </div>
+                                </button>
 
                                 <?php
                                 
@@ -68,19 +70,6 @@
         <?php wp_reset_postdata(); ?>
     </div>
 
-    <!-- Lightbox -->
-        <div class='modal-container'>
-            <span class="btn-close">X</span>
-            <div class="left-arrow"></div>
-            <div>
-                <img src="" class="middle-image" />
-                <div class="info-photo">
-                    <span id="modal-reference"></span>
-                    <span id="modal-category"></span>
-                </div>
-            </div>
-            <div class="right-arrow"></div>
-        </div>
 
     <div class="view-all-button">
         <button id="load-more-posts"

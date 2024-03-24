@@ -1,19 +1,5 @@
 <?php get_header(); ?>
 
-<!-- Lightbox Photo -->
-<div class='modal-container'>
-    <span class="btn-close">X</span>
-    <div class="left-arrow"></div>
-    <div>
-        <img src="" class="middle-image" />
-        <div class="info-photo">
-            <span id="modal-reference"></span>
-            <span id="modal-category"></span>
-        </div>
-    </div>
-    <div class="right-arrow"></div>
-</div>
-
 <!-- Single -->
 <main id="main" class="content-area">
     <div class="zone-contenu mobile-first">

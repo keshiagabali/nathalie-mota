@@ -8,4 +8,5 @@
         <!-- Contact Form 7 shortcode -->
         <?php echo do_shortcode('[contact-form-7 id="2cc0601" title="Modal Contact 1"]'); ?>
   </div>
+  
 </div>

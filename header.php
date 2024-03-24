@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/single.css">
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/index.css">
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/liste-photo.css">
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/lightbox.css">
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 

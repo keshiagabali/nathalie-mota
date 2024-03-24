@@ -6,6 +6,8 @@
         ]);
         ?>
     </nav>
+    <?php include ( 'templates_part/lightbox.php')?>
+
 </footer>
 <?php wp_footer(); ?>
 </body>

@@ -1,0 +1,115 @@
+#myLightbox {
+    display: none;
+}
+
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .8);
+    z-index: 10;
+}
+
+.lightbox__container img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    width: 565px;
+    height: 495px !important;
+}
+
+.lightbox__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 50px 100px;
+    min-height: 100vh;
+}
+
+.lightbox__close {
+    width: 22px;
+    height: 22px;
+    border: none;
+    background: none;
+    position: fixed;
+    top: 10%;
+    right: 20%;
+    z-index: 12;
+}
+
+.lightbox__next,
+.lightbox__prev {
+    display: flex;
+    align-items: center;
+    width: 107px;
+    height: 18px;
+    border: none;
+    background: none;
+    position: fixed;
+    top: 50%;
+    z-index: 11;
+    gap: 15px; 
+}
+
+.lightbox__prev {
+    left: 18%;    
+}
+
+.lightbox__next {
+    right: 20%;    
+}
+    
+.lightbox__prev img {
+    margin-right: 10px;
+}
+
+.lightbox__next img {
+    margin-left: 10px;
+}
+
+.lightbox__next p,
+.lightbox__prev p {
+    margin: 0px;
+    color: white;
+    font-family: "Space Mono";
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.lightbox__next p:hover,
+.lightbox__prev p:hover {
+    font-weight: 700;
+}
+
+.photo-info-lightbox{
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 0;
+    width: 564px;
+    padding: 10px;
+    color: white;
+    font-family: 'Space Mono';
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: 0.1em;
+    text-align: center;
+    text-transform: uppercase;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 172px;
+}
+
+
+
+.photo-info-left-lightbox{
+
+}
+
+.photo-info-right-lightbox{
+
+}
+

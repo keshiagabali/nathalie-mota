@@ -152,36 +152,43 @@ document.addEventListener('DOMContentLoaded', function() {
     // LIGHTBOX
 
     $(document).ready(function() {
+
+        $(document).on('click', '.fullscreen-icon', function(event) {
+            event.preventDefault(); 
+            event.stopPropagation();
+    
+            refreshImagesArray(); 
+    
+            currentIndex = $('.fullscreen-icon').index(this);
+            updateLightbox(currentIndex); 
+    
+            $('#myLightbox').css('display', 'block'); 
+        });
+    
         var currentIndex = 0;
-        var images = $('.fullscreen-icon').map(function() {
-            return {
-                src: $(this).data('src'),
-                reference: $(this).siblings('.photo-info').find('.photo-info-left p').text(),
-                category: $(this).siblings('.photo-info').find('.photo-info-right p').text()
-            };
-        }).get();
+        var images = []; 
+    
+        function refreshImagesArray() {
+            images = $('.fullscreen-icon').map(function() {
+                return {
+                    src: $(this).data('src'),
+                    reference: $(this).siblings('.photo-info').find('.photo-info-left p').text(),
+                    category: $(this).siblings('.photo-info').find('.photo-info-right p').text()
+                };
+            }).get();
+        }
     
         function updateLightbox(index) {
-            currentIndex = ((index % images.length) + images.length) % images.length;
-            var imageData = images[currentIndex];
+            currentIndex = ((index % images.length) + images.length) % images.length; 
+            var imageData = images[currentIndex]; 
     
             $('#myLightbox .lightbox__container').html('<img src="' + imageData.src + '">');
             $('#myLightbox .photo-info-left-lightbox').html('<p>' + imageData.reference + '</p>');
             $('#myLightbox .photo-info-right-lightbox').html('<p>' + imageData.category + '</p>');
         }
     
-        $('.fullscreen-icon').click(function(event) {
-            event.preventDefault(); 
-            event.stopPropagation();
-            
-            currentIndex = $('.fullscreen-icon').index(this); 
-            updateLightbox(currentIndex); 
-            
-            $('#myLightbox').css('display', 'block');
-        });
-    
         $('.lightbox__close').click(function() {
-            $('#myLightbox').css('display', 'none');
+            $('#myLightbox').css('display', 'none'); 
         });
     
         $('.lightbox__prev').click(function(event) {
@@ -193,7 +200,41 @@ document.addEventListener('DOMContentLoaded', function() {
             event.preventDefault();
             updateLightbox(currentIndex + 1); 
         });
-        
+    });
+            
+    // FILTRE
+
+    jQuery(document).ready(function($) {
+
+        $('#category-filter, #format-filter, #date-sort').on('change', function() {
+            loadFilteredPosts();
+        });
+    
+        function loadFilteredPosts() {
+            var category = $('#category-filter').val();
+            var format = $('#format-filter').val();
+            var sort = $('#date-sort').val();
+            var page = 1; 
+            var ajaxurl = $('#load-more-posts').data('ajaxurl');
+            var nonce = $('#load-more-posts').data('nonce');
+    
+            $.ajax({
+                url: ajaxurl,
+                type: 'POST',
+                data: {
+                    action: 'load_filtered_posts',
+                    category: category,
+                    format: format,
+                    sort: sort,
+                    page: page,
+                    security: nonce
+                },
+                success: function(data) {
+                    $('.thumbnail-container-accueil').html(data); 
+                    $('#load-more-posts').data('page', 1); 
+                }
+            });
+        }
     });
 });
 

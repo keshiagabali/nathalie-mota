@@ -9,13 +9,11 @@
     <div class="lightbox__navigation">
 
         <button class="lightbox__prev">
-            <img src="<?php echo get_template_directory_uri(); ?>/img_logo/fleche-lightbox-gauche.png" alt="Fleche lightbox gauche">
             <p>Précédente</p>
         </button>
 
         <button class="lightbox__next">
             <p>Suivante</p>
-            <img src="<?php echo get_template_directory_uri(); ?>/img_logo/fleche-lightbox-droite.png" alt="Fleche lightbox droite">
         </button>
 
     </div>

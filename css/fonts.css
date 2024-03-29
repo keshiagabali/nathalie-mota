@@ -1,25 +1,5 @@
-/* p */
-@font-face {
-    font-family: 'Poppins Light';
-    src: url('fonts/Poppins/Poppins-Light.ttf') format('truetype');
-    font-weight: 300;
-    font-style: normal;
-}
-/* description + h3 */
-@font-face {
-    font-family: 'Space_Mono';
-    src: url('fonts/Space_Mono/SpaceMono-Regular.ttf') format('truetype');
-    font-weight: 400;
-    font-style: normal;
-}
-/* h2 */
-@font-face {
-    font-family: 'Space_Mono';
-    src: url('fonts/Space_Mono/SpaceMono-Italic.ttf') format('truetype');
-    font-weight: 400;
-    font-style: italic;
-}
-/* h1 */
+/* H1 */
+
 @font-face {
     font-family: 'Space_Mono';
     src: url('fonts/Space_Mono/SpaceMono-BoldItalic.ttf') format('truetype');
@@ -27,7 +7,34 @@
     font-style: italic;
 }
 
-/* MEDIA ECRAN BUREAU */
+/* H2 */
+
+@font-face {
+    font-family: 'Space_Mono';
+    src: url('fonts/Space_Mono/SpaceMono-Italic.ttf') format('truetype');
+    font-weight: 400;
+    font-style: italic;
+}
+
+/* DESCCRIPTION + H3 */
+
+@font-face {
+    font-family: 'Space_Mono';
+    src: url('fonts/Space_Mono/SpaceMono-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* P */
+
+@font-face {
+    font-family: 'Poppins Light';
+    src: url('fonts/Poppins/Poppins-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+/* MEDIA */
 
 @media only screen and (min-width: 768px) {
     /* Paragraphs */
@@ -73,16 +80,7 @@
     }
 }
 
-/* MEDIA ECRAN MOBILE */
-
-@media only screen and (max-width: 767px) {
-    /* Menu */
-    .font-menu {
-        font-family: 'Space Mono', monospace;
-        font-size: 16px;
-        font-weight: 400;
-        line-height: 24px;
-    }
+@media only screen and (max-width: 768px) {
     /* Paragraphs */
     p {
         font-family: 'Poppins', sans-serif;
@@ -109,11 +107,11 @@
 
     /* H2 */
     h2 {
-        font-family: 'Space Mono', monospace;
-        font-size: 46px;
-        font-style: italic;
-        font-weight: 400;
-        line-height: 48px;
+        font-family: 'Space Mono', monospace !important;
+        font-size: 36px!important;
+        font-style: italic!important;
+        font-weight: 400!important;
+        line-height: 58px!important;
     }
 
     /* H1 */
@@ -122,6 +120,6 @@
         font-size: 28px;
         font-style: italic;
         font-weight: 700;
-        line-height: 41px;
+        line-height: 142px;
     }
 }

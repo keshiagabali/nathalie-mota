@@ -29,7 +29,6 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_styles');
 
 function enqueue_custom_scripts() {
     wp_enqueue_script('custom-scripts', get_template_directory_uri() . '/js/scripts.js', array('jquery'), '1.0', true);
-    wp_enqueue_script('custom-scripts', get_template_directory_uri() . '/js/lightbox.js', array('jquery'), '1.0', true);
 }
 add_action('wp_enqueue_scripts', 'enqueue_custom_scripts');
 
@@ -129,7 +128,7 @@ function load_filtered_posts() {
     $page = $_POST['page'];
     $category = isset($_POST['category']) ? $_POST['category'] : '';
     $format = isset($_POST['format']) ? $_POST['format'] : '';
-    $sort = isset($_POST['sort']) ? $_POST['sort'] : 'DESC'; 
+    $sort = isset($_POST['sort']) ? $_POST['sort'] : 'DESC';
 
     $args = array(
         'post_type' => 'photo',
@@ -140,7 +139,7 @@ function load_filtered_posts() {
     );
 
     // Catégorie
-    if ($category !== 'ALL') {
+    if ($category !== 'ALL' && !empty($category)) {
         $args['tax_query'][] = array(
             'taxonomy' => 'categorie',
             'field' => 'slug',
@@ -149,7 +148,7 @@ function load_filtered_posts() {
     }
 
     // Format
-    if ($format !== 'ALL') {
+    if ($format !== 'ALL' && !empty($format)) {
         $args['tax_query'][] = array(
             'taxonomy' => 'format',
             'field' => 'slug',

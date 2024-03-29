@@ -33,9 +33,10 @@
 }
 
 .texte-contact p {
-    font-weight: 300;
+    font-family: 'Space Mono', monospace;
+    font-weight: 400;
     font-size: 14px;
-    line-height: 21px;
+    line-height: 20.73px;
 }
 
 .left-container,
@@ -94,7 +95,6 @@
     object-fit: cover;
 }
 
-
 .right-contact > div {
     display: inline-block;
     vertical-align: middle;
@@ -145,8 +145,8 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 564px;
+    height: 495px;
     background: rgba(0, 0, 0, 0.6);
     opacity: 0;
     display: flex;
@@ -156,7 +156,6 @@
     transition: opacity 0.3s;
     text-align: center;
 }
-
 
 .photo-info {
     display: flex;
@@ -227,7 +226,6 @@
     cursor: pointer;
 }
 
-
 .left-arrow,
 .right-arrow {
   width: auto;
@@ -253,7 +251,6 @@
   font-weight: 700;
 }
 
-
 .left-arrow .arrow-img-gauche {
   filter: invert(100%); 
   margin-right: 10px;
@@ -266,7 +263,8 @@
 .right-arrow .arrow-img-droite {
   filter: invert(100%); 
   margin-left: 10px;
-  order: 2; }
+  order: 2; 
+}
 
 .info-photo {
   display: flex;
@@ -307,7 +305,6 @@
     display: flex;
     justify-content: space-between;
     margin-top: 60px; 
-    margin-bottom: 70px;
 }
 
 .related-image {
@@ -319,119 +316,81 @@
 .image-wrapper {
     position: relative;
     overflow: hidden;
-    padding-bottom: 100%;
+    padding-bottom: 60px;
+    width: 564px;
+    height: 495px;
 }
 
 .image-wrapper img {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
     object-fit: cover;
+    width: 564px;
+    height: 495px;
 }
-
-/* MODAL */
-
-.modal-container {
-    display: none !important;
-    position: fixed;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    width: 100%;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.9);
-    z-index: 10000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .modal-container.opened {
-    opacity: 1;
-    display: flex !important;
-  }
-  
-  .modal-container img {
-    max-height: 80vh;
-  }
-  
-.modal-photo {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.822);
-    overflow: auto;
-}
-
-.modal-content-photo {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: auto;
-    max-width: 80%;
-    height: auto;
-    background-color: #fff;
-    padding: 20px;
-    -webkit-animation-name: animatetop;
-    -webkit-animation-duration: 0.8s;
-    animation-name: animatetop;
-    animation-duration: 0.8s;
-    animation-timing-function: ease;
-}
-
-.close-photo {
-    font-family: "Space Mono", monospace;
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    font-size: 24px;
-    cursor: pointer;
-}
-
-.close-photo:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.close-photo:hover {
-    text-decoration: underline;
-}
-
-/* MEDIA MODAL */
 
 .right-container.mobile-first {
     order: -1;
 }
 
+/* MEDIA */
 
 @media (max-width: 768px) {
-    .modal-content-photo {
-        max-width: 95%;
-    }
-    .left-contact {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        text-align: center;
-    }
-    .left-contact .texte-contact,
-    .left-contact div {
-        width: 100%;
-    }
-    .zone-contact {
-        justify-content: center;
-    }
-}
 
-@media (max-width: 768px) {
+    .wpcf7 input[type="text"],
+    .wpcf7 input[type="email"],
+    .wpcf7 textarea,
+    .wpcf7 label {
+        width: 190px;
+        height: 40px;
+    }
+
+    .wpcf7 textarea[name="your-message"] {
+        width: 190px;
+        height: 149px;
+    }
+    input[type=submit] {
+        width: 190px;
+    }
+    form {
+        margin: 0;
+        }
+    .modal-content-photo,
+    .modal-content {
+        width: 286px;
+        height: 583px;
+
+    }
+
+    .modal-content {
+        margin-left: -20px;    
+    }
+        
+    form p {
+        margin: 6px;
+    }
+
+    .wpcf7-form-control-wrap input,
+    .wpcf7-form-control-wrap textarea {
+        width: 100%; 
+        box-sizing: border-box; 
+    }
+
+    .modal-content-photo img
+     {
+        width: 300px;
+        height: 55px;
+
+    }
+
+    .modal-content img
+     {
+        width: 290px;
+        height: 55px;
+
+    }
+
     .btn-close {
       font-size: 18px;
       padding: 20px;
@@ -485,11 +444,7 @@
       padding: 10px;
       font-size: 14px;
     }
-}
 
-/* MEDIA */
-
-@media (max-width: 768px) {
     .zone-contenu,
     .zone-contact,
     .left-container,
@@ -523,6 +478,85 @@
     .left-contact div {
         width: 100%;
     }
+
+    .bouton-contact {
+        margin-left: 30%;
+    }
+
+    .texte-contact {
+        width: 300px !important;
+        margin-left: 90px;
+        margin-top: -25px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .left-contenu {
+        margin-bottom: 50px;
+        margin-left: 30px;
+    }
+
+    .related-images {
+        margin-top: auto; 
+    }
+
+    .related-images h3 {
+        text-align:center;
+        margin-bottom: auto;  
+    }
+
+    .image-container {
+        margin-top: 40px;
+    }
+
+    .image-wrapper {
+        width: 317px;
+        height: 278px;
+        padding-bottom: 40px;
+        margin-left: -10px;
+    }
+    .mentions-rgpd {
+        margin-left: 46px !important;
+        margin-right: 46px !important;
+    }
+
+    .right-contact,
+    .prev-photo,
+    .next-photo {
+      display: none;
+    }
+
+    .image-container {
+        display: block;
+    }
+
+    .related-image {
+        flex: 1; 
+        margin-right: 0; 
+    }
+
+    .image-wrapper img {
+        width: 317PX;
+        height: 278PX;    
+    }
+
+    .photo-info {
+        justify-content: space-around;
+    }
+
+    .thumbnail-overlay-single {
+        width: 317px;
+        height: 278px;
+    }
+    
+    .left-contact {
+        display: flex;
+        align-items: center;
+    }
+    .left-contact .texte-contact,
+    .left-contact div {
+        width: 100%;
+    }
 }
 
 @media (min-width: 1024px) {
@@ -535,27 +569,3 @@
     }
 }
 
-@media (max-width: 768px) {
-    .right-contact,
-    .prev-photo,
-    .next-photo {
-      display: none;
-    }
-}
-
-@media (max-width: 768px) {
-    .image-container {
-        display: block;
-    }
-
-    .related-image {
-        flex: 1; 
-        margin-right: 0; 
-        margin-bottom: 10px; 
-    }
-}
-
-
-
-  
-  

@@ -1,5 +1,7 @@
 body {
     background-color: #FFFFFF;
+    margin-left: 0px;
+    margin-right: 0px;
 }
 
 main {
@@ -12,7 +14,6 @@ main {
     margin: 0 auto;
     max-width: 800px;
 }
-
 
 header {
     display: flex;
@@ -94,64 +95,59 @@ header {
     transition: 0.4s;
 }
 
-/* MODAL */
-
-#open-modal-button-header {
-    background-color: transparent;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-}
-
-#open-modal-button-header:hover {
-    font-family: "Space Mono", monospace;
-    font-size: 16px;
-    font-weight: 700;
-}
-
-.close:hover,
-.close-button:hover {
-    text-decoration: underline;
-}
-
-/* MEDIA MENU */
+/* MEDIA */
 
 @media (max-width: 768px) {
+
+    header {
+        height: 72px;
+        margin-left: 40px;
+        margin-right: 40px;    
+    }
+
+    .header-logo,
+    .header-logo img {
+        margin-bottom: 6px;
+
+    }
+
     .mobile-menu-button {
         display: block;
+        margin-bottom: 15px;
     }
 
     .header-menu {
-        display: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 75%; 
+        max-height: 100vh;
+        background-color: #fff;
+        transform: translateX(100%);
+        transition: transform 0.5s ease;
+        z-index: 1000;
+        overflow-y: auto;
+        width: 375px !important;
     }
 
     .mobile-menu-opened .header-menu {
-        display: flex;
-        flex-direction: column; 
-        align-items: center;
-        background-color: #fff;
-        position: fixed;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        padding: 10px;
-        box-shadow: 0px 4px 14px 10px #00000008;
-        z-index: 1000;
-        overflow-y: auto;
+        transform: translateX(0%);
     }
 
     .close-button {
         position: absolute;
         font-family: "Space Mono", monospace;
-        top: 10px;
-        right: 10px;
         background: none;
         border: none;
         cursor: pointer;
         font-size: 16px;
         color: #000;
+        margin-right: 20px;
+        margin-top: 5px;
     }
 
     .close-button-container {
@@ -170,6 +166,7 @@ header {
         flex-wrap: wrap;
         justify-content: center;
         text-align: center;
+        margin-left: 50px;
     }
 
     .footer-menu ul {
@@ -182,7 +179,6 @@ header {
         text-align: center;
         flex-flow: column;
     }
-
      
     .mobile-menu-opened .header-menu {
         background: #E00000;
@@ -199,6 +195,35 @@ header {
     }
     .header-menu li a,
     #open-modal-button-header {
+        font-family: 'Space Mono' !important;
+        font-weight: 400!important;
+        font-size: 44px!important;
+        line-height: 65px!important;
+        text-align: center!important;
+        text-transform: uppercase!important;
+        color: #FFFFFF!important;
+        transition: font-weight 0.3s ease!important;
+    }
+
+    #open-modal-button-header {
+        margin-left: 30px;
+    }
+
+    .header-menu li {
+        width: 100%; 
+        text-align: center; 
+        margin-bottom: 20px;
+    }
+
+    .header-menu li a {
+        color: #FFFFFF; 
+        font-size: 44px; 
+        font-weight: 400;
+        transition: font-weight 0.3s ease;
+    }
+
+    .header-menu li a:hover,
+    #open-modal-button-header:hover{
         font-family: 'Space Mono';
         font-weight: 400;
         font-size: 44px;
@@ -206,18 +231,7 @@ header {
         text-align: center;
         text-transform: uppercase;
         color: #FFFFFF;
-        margin-bottom: 20px;
         transition: font-weight 0.3s ease;
-    }
-
-    .header-menu li {
-    margin-right: -3px;
-    }
-
-    .header-menu li a:hover,
-    #open-modal-button-header:hover {
-        font-size: 44px;
-        font-weight: 600;
     }
 
     .close-button {
@@ -242,6 +256,20 @@ header {
 
     .close-button {
         display: block;
+    }
+
+    .hero {
+        height: 250px !important;
+    }
+
+    .hero-image img {
+        width: 288px;
+        height: 41px;
+    }
+
+    #menu-header li {
+        margin-top: auto;
+        margin-left: auto;
     }
 }
 

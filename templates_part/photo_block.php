@@ -1,6 +1,5 @@
     <div class="image-container">
         <?php
-        // photos meme category
         $args_related_photos = array(
             'post_type' => 'photo',
             'posts_per_page' => 2,

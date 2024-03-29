@@ -21,10 +21,26 @@
     object-fit: cover;
 }
 
-/* MEDIA HERO */
+.mentions-rgpd {
+    margin-left: 146px;
+    margin-right: 146px;
 
-@media screen and (max-width: 768px) {
-    .hero {
-        height: 400px; /* Hauteur - Mobiles */
-    }
 }
+
+.mentions-rgpd h2 {
+    text-transform: uppercase;
+}
+
+.mentions-rgpd h3 {
+    text-transform: uppercase;
+}
+
+.mentions-rgpd p {
+    text-transform: none;
+    font-family: 'Poppins Light';
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20.73px;
+}
+
+

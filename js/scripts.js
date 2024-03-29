@@ -21,32 +21,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // MODAL HEADER
 
-    var headerModal = document.getElementById('myModal');
-    var headerBtn = document.getElementById("open-modal-button-header");
-    var headerSpan = document.getElementsByClassName("close")[0];
+        var headerModal = document.getElementById('myModal');
+        var headerBtn = document.getElementById("open-modal-button-header");
 
-    headerBtn.onclick = function() {
-        headerModal.style.display = "block";
-    }
-
-    headerSpan.onclick = function() {
-        headerModal.style.display = "none";
-    }
-
-    window.onclick = function(event) {
-        if (event.target == headerModal) {
-            headerModal.style.display = "none";
+        headerBtn.onclick = function() {
+            headerModal.style.display = "block";
         }
-    }
+
+        window.addEventListener('click', function(event) {
+            if (event.target == headerModal) {
+                headerModal.style.display = "none";
+            }
+        });
 
     // MODAL SINGLE
     if (jQuery('#myBtn-photo').length) {
 
         var photoModal = document.getElementById('myModal-photo');
         var photoBtn = document.getElementById("myBtn-photo");
-        var photoSpan = document.getElementsByClassName("close-photo")[0];
         var referenceInput = photoModal.querySelector('input[name="your-subject"]');
-
 
         photoBtn.onclick = function() {
             photoModal.style.display = "block";
@@ -57,15 +50,11 @@ document.addEventListener('DOMContentLoaded', function() {
             }   
         }
 
-        photoSpan.onclick = function() {
-            photoModal.style.display = "none";
-        }
-
-        window.onclick = function(event) {
+        window.addEventListener('click', function(event) {
             if (event.target == photoModal) {
                 photoModal.style.display = "none";
             }
-        }
+        });
     }
 
     // PHOTO NAV SINGLE
@@ -206,15 +195,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     jQuery(document).ready(function($) {
 
-        $('#category-filter, #format-filter, #date-sort').on('change', function() {
-            loadFilteredPosts();
-        });
-    
         function loadFilteredPosts() {
-            var category = $('#category-filter').val();
-            var format = $('#format-filter').val();
-            var sort = $('#date-sort').val();
-            var page = 1; 
+
+            var category = $('#category-filter-list .selected').data('value');
+            var format = $('#format-filter-list .selected').data('value');
+            var sort = $('#date-sort-list .selected').data('value');
+            var page = 1;
             var ajaxurl = $('#load-more-posts').data('ajaxurl');
             var nonce = $('#load-more-posts').data('nonce');
     
@@ -230,12 +216,49 @@ document.addEventListener('DOMContentLoaded', function() {
                     security: nonce
                 },
                 success: function(data) {
-                    $('.thumbnail-container-accueil').html(data); 
-                    $('#load-more-posts').data('page', 1); 
+                    $('.thumbnail-container-accueil').html(data);
+                    $('#load-more-posts').data('page', 1);
                 }
             });
         }
+
+        $('.filter-list li').on('click', function() {
+
+            $(this).siblings().removeClass('selected'); 
+            $(this).addClass('selected'); 
+    
+            loadFilteredPosts();
+
+            var selectedText = $(this).text();
+            var $filterContainer = $(this).closest('.filter-list').find('.filter-container p');
+
+            if ($(this).data('value') === 'ALL') {
+                if($(this).closest('.filter-list').attr('id') === 'category-filter-list') {
+                    $filterContainer.text('Catégories');
+                } else if($(this).closest('.filter-list').attr('id') === 'format-filter-list') {
+                    $filterContainer.text('Formats'); 
+                }
+            } else {
+                $filterContainer.text(selectedText);
+            }
+        });
     });
-});
+
+        $('.filter-container, .chevron-icon').click(function(event) {
+            var $filterList = $(this).closest('.filter-list');
+            $filterList.toggleClass('open');
+            event.stopPropagation();
+    
+            var $chevron = $filterList.find('.chevron-icon');
+            $chevron.css('transform', $filterList.hasClass('open') ? 'rotate(180deg)' : 'rotate(0deg)');
+        });
+    
+        $(document).click(function() {
+            $('.filter-list').removeClass('open');
+            $('.chevron-icon').css('transform', '');
+        });
+    });
+             
+
 
 

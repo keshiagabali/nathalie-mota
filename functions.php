@@ -1,11 +1,12 @@
 <?php
 
-//MENU
+// Enregistrement du menu principal dans l'entête
 function register_header_menu() {
     register_nav_menu( 'header-menu', __( 'Menu principal', 'text-domain' ) );
 }
 add_action( 'after_setup_theme', 'register_header_menu' );
 
+// Enregistrement du menu dans le pied de page
 function register_footer_menu() {
     register_nav_menu( 'footer-menu', __( 'Footer Menu', 'text-domain' ) );
 }
@@ -13,6 +14,7 @@ add_action( 'after_setup_theme', 'register_footer_menu' );
 
 
 /* STYLE  */
+// Chargement des feuilles de style personnalisées
 function enqueue_custom_styles() {
     wp_enqueue_style('custom-theme-css', get_template_directory_uri() . '/style.css', array(), '1.0', 'all');
     wp_enqueue_style('custom-theme-css', get_template_directory_uri() . '/css/fonts.css', array(), '1.0', 'all');
@@ -26,25 +28,24 @@ function enqueue_custom_styles() {
 add_action('wp_enqueue_scripts', 'enqueue_custom_styles');
 
 /* SCRIPT */
-
+// Chargement des scripts personnalisés
 function enqueue_custom_scripts() {
     wp_enqueue_script('custom-scripts', get_template_directory_uri() . '/js/scripts.js', array('jquery'), '1.0', true);
 }
 add_action('wp_enqueue_scripts', 'enqueue_custom_scripts');
 
 /* IMG MIS EN AVANT */
-
 add_theme_support( 'post-thumbnails' );
 
 /* FONTAWESOME */
-
+// Chargement de Font Awesome
 function enqueue_font_awesome() {
     wp_enqueue_style('font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
 }
 add_action('wp_enqueue_scripts', 'enqueue_font_awesome');
 
 /* CHARGER PLUS */
-
+// Fonction pour charger plus de posts via AJAX
 function load_more_posts() {
     check_ajax_referer('load_more_posts_nonce', 'security');
 
@@ -121,15 +122,17 @@ add_action('wp_ajax_load_more_posts', 'load_more_posts');
 add_action('wp_ajax_nopriv_load_more_posts', 'load_more_posts');
 
 // FILTRES
-
+// Fonction pour charger des posts filtrés via AJAX
 function load_filtered_posts() {
     check_ajax_referer('load_more_posts_nonce', 'security');
 
+    // Récupération des paramètres de filtre
     $page = $_POST['page'];
     $category = isset($_POST['category']) ? $_POST['category'] : '';
     $format = isset($_POST['format']) ? $_POST['format'] : '';
     $sort = isset($_POST['sort']) ? $_POST['sort'] : 'DESC';
 
+    // Configuration des arguments de la requête selon les filtres
     $args = array(
         'post_type' => 'photo',
         'posts_per_page' => 8,

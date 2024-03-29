@@ -5,15 +5,16 @@
     <div class="zone-contenu mobile-first">
         <div class="left-container">
             <div class="left-contenu">
+                <!-- Affiche le titre de la publication -->
                 <h2><?php the_title(); ?></h2>
                 <?php
-                // Réf photo
+                // // Affiche la référence de la photo si elle existe
                 $reference_photo = get_field('reference');
                 if ($reference_photo) {
                     echo '<p>Référence : ' . esc_html($reference_photo) . '</p>';
                 }
 
-                // Catégories photo
+                // Affiche les catégories de la photo
                 $categories = get_the_terms(get_the_ID(), 'categorie');
                 $current_category_slugs = array();
 
@@ -33,7 +34,7 @@
                     echo '</p>';
                 }
 
-                // Format photo
+                // Affiche le format de la photo
                 $format_terms = get_the_terms(get_the_ID(), 'format');
                 if ($format_terms) {
                     echo '<p>Format : ';
@@ -45,13 +46,13 @@
                     echo '</p>';
                 }
 
-                // Type photo
+                // Affiche le type de la photo si défini
                 $type_de_photo = get_field('type');
                 if ($type_de_photo) {
                     echo '<p>Type : ' . esc_html($type_de_photo) . '</p>';
                 }
 
-                // Année photo
+                // Affiche l'année de capture de la photo
                 $date_capture = get_the_date('Y'); 
                 if ($date_capture) {
                     echo '<p>Année : ' . esc_html($date_capture) . '</p>';
@@ -60,6 +61,7 @@
             </div>
         </div>
         <div class="right-container">
+            <!-- Affiche l'image à la une de la publication -->
             <?php if (has_post_thumbnail()) : ?>
                 <a data-href="<?php echo wp_get_attachment_image_src(get_post_thumbnail_id(), 'large')[0]; ?>" class="photo">
                     <?php the_post_thumbnail(); ?>
@@ -75,13 +77,14 @@
             </div>
 
             <div class="bouton-contact">
+                <!-- Template modale photo -->
                 <?php include ( 'templates_part/modal-photo.php')?>
             </div>
         </div> 
 
         <div class="right-contact">
             <?php
-            
+                // Logique pour naviguer entre les photos (précédente/suivante)
                 $current_post_id = get_the_ID();
 
                 
@@ -108,6 +111,7 @@
             ?>
 
             <div class="thumbnail-container">
+                <!-- Liens de navigation et images des publications précédente et suivante -->
                 <div class="thumbnail-wrapper">
                     
                 </div>
@@ -125,6 +129,7 @@
     <!-- Photos Apparentées -->
     <div class="related-images">
         <h3>VOUS AIMEREZ AUSSI</h3>
+        <!-- Template pour afficher des photos liées -->
         <?php include ( 'templates_part/photo_block.php')?>
     </div>
       
